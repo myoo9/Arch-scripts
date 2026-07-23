@@ -28,7 +28,7 @@ read -p "Specify your EFI partition:" Epart
 read -p "Specify your boot partition:" Bpart
 read -p "Specify your root partition:" Rpart
 
-UUID=$(lsblk -no PARTUUID /dev/${Dname}${Rpart})
+UUID=$(lsblk -no UUID /dev/${Dname}${Rpart})
 
 pacman -Syu --noconfirm
 pacman -S --noconfirm limine efibootmgr
