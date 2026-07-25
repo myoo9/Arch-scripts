@@ -56,4 +56,25 @@ echo "Timeout: 5
   protocol: linux
   path: boot():/vmlinuz-linux
   cmdline: root=UUID=$UUID rw
-  module_path: boot():/initramfs-linux.img" > /boot/limine.conf
+  module_path: boot():/initramfs-linux.img
+
+" > /boot/limine.conf
+
+win_options=("Yes" "No")
+
+select w_opt in "${win_options[@]}"; do
+  case $w_opt in
+    "Yes")
+      echo "A Windows entry was added"
+      echo "/Windows
+  protocol:efi
+  path: boot():/EFI/Microsoft/Boot/bootmgfw.efi" >> /boot/limine.conf
+      echo "Installation completed"
+      break
+      ;;
+    "No")
+      echo "Installation completed"
+      break
+      ;;
+    *)
+      echo "Installation completed, if you want to set-up an Windows entry, you can restart the script"
