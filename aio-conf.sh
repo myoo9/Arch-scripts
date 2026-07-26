@@ -1,10 +1,6 @@
 echo "Easy installation script for Arch Linux"
-echo "Basic data collection"
 
-#Basic general data collection
-read -p "Continent:" cntnt
-read -p "Country:" cntry
-read -p "Capital:" cptal
+#hostname
 read -p "Hostname:" hname
 
 #Separator
@@ -71,25 +67,6 @@ echo "Timeout: 5
 
 " > /boot/limine.conf
 
-win_options=("Yes" "No")
-
-select w_opt in "${win_options[@]}"; do
-  case $w_opt in
-    "Yes")
-      echo "A Windows entry was added"
-      echo "/Windows
-  protocol:efi
-  path: boot():/EFI/Microsoft/Boot/bootmgfw.efi" >> /boot/limine.conf
-      echo "Installation completed"
-      break
-      ;;
-    "No")
-      echo "Installation completed"
-      break
-      ;;
-    *)
-      echo "Installation completed, if you want to set-up an Windows entry, you can restart the script"
-
 
 #Date, time, timezone and hostname configuration
 ln -sf /usr/share/zoneinfo/Area/Location /etc/localtime
@@ -98,7 +75,6 @@ echo "es_ES.UTF-8" > /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=es" > /etc/vconsole.conf
-read -p "Hostname:" hname
 echo "$hname" > /etc/hostname
 
 #Base propgrams installation & configuration
