@@ -77,16 +77,10 @@ echo "KEYMAP=es" > /etc/vconsole.conf
 locale-gen
 echo "$hname" > /etc/hostname
 
-#Base propgrams installation & configuration
-pacman -Sq --needed --noconfirm --noprogressbar git base-devel
-git clone https://aur.archlinux.org/yay.git
-makepkg -si -D yay
-rm -rf yay
-yay -Sa --answerclean a --answerdiff N brave-origin-bin portmaster-bin vscodium 
-pacman -S --noconfirm --noprogressbar dhcpcd alacritty gnome-boxes nautilus localsend
-
+#Base propgrams installation
+pacman -S --noconfirm --noprogressbar nvim dhcpcd alacritty gnome-boxes localsend
 systemctl enable dhcpcd
 
-#Kde plasma installation & configuration
-pacman -Syu
+#Gnome installation
 pacman -Sq --noconfirm gnome
+systemctl enable gdm
