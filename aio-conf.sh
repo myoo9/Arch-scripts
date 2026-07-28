@@ -4,7 +4,7 @@ echo "Easy installation script for Arch Linux"
 read -p "Hostname:" hname
 
 #Separator
-read -n 1 -r -s -p $'Press enter to continue...\n'
+#read -n 1 -r -s -p $'Press enter to continue...\n'
 
 #Bootloader configurator
 echo "Limine installation script (For Arch Linux)"
@@ -72,21 +72,21 @@ echo "Timeout: 5
 ln -sf /usr/share/zoneinfo/Area/Location /etc/localtime
 hwcloack --systohc
 echo "es_ES.UTF-8" > /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "LANG=es_ES.UTF-8" > /etc/locale.conf
 echo "KEYMAP=es" > /etc/vconsole.conf
+locale-gen
 echo "$hname" > /etc/hostname
 
 #Base propgrams installation & configuration
 pacman -Sq --needed --noconfirm --noprogressbar git base-devel
 git clone https://aur.archlinux.org/yay.git
-makepkg -si -D ~/yay
-rm -rf ~/yay
+makepkg -si -D yay
+rm -rf yay
 yay -Sa --answerclean a --answerdiff N brave-origin-bin portmaster-bin vscodium 
-pacman -S --needed --noconfirm --noprogressbar dhcpcd alacritty gnome-boxes nautilus localsend
+pacman -S --noconfirm --noprogressbar dhcpcd alacritty gnome-boxes nautilus localsend
 
 systemctl enable dhcpcd
 
 #Kde plasma installation & configuration
 pacman -Syu
-pacman -S --noconfirm aurorae bluedevil breeze breeze-cursors breeze-gtk kactivitymanagerd kde-cli-tools kde-gtk-config kdecoration kde-plasma-addons kgamma kglobalacceld kinfocenter kmenuedit krdp kscreen kscreenlocker ksystemstats kwayland kwin layer-shell-qt libkscreen libksysguard libplasma milou plasma-activities plasma-activities-stats plasma-desktop plasma-disks plasma-integration plasma-login-manager plasma-pa plasma-sdk plasma-systemmonitor plasma-thunderbolt plasma-workspace plasma5support polkit-kde-agent print-manager qqc2-breeze-style
+pacman -Sq --noconfirm gnome
