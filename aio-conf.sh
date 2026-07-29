@@ -78,7 +78,7 @@ locale-gen
 echo "$hname" > /etc/hostname
 
 #Base propgrams installation
-pacman -Sq --noconfirm nvim sudo dhcpcd gnome-boxes
+pacman -Sq --noconfirm nvim sudo dhcpcd gnome-boxes go
 
 dhcpcd
 
