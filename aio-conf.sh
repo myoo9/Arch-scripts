@@ -78,12 +78,16 @@ locale-gen
 echo "$hname" > /etc/hostname
 
 #Base propgrams installation
-pacman -S --noconfirm nvim sudo dhcpcd alacritty gnome-boxes localsend
+pacman -Sq --noconfirm nvim sudo dhcpcd gnome-boxes
+
+dhcpcd
+
 systemctl enable dhcpcd
+
 groupadd sudo
 
 #Gnome installation
 pacman -Sq --noconfirm gnome
 systemctl enable gdm
 
-pacman -Rn --noconfirm simple-scan gnome-contacts snapshot gnome-user-docs yelp gnome-music gnome-user-share gnome-remote-desktop gnome-maps sushi gnome-text-editor showtime gvfs-wsdd gvfs-smb gvfs-onedrive gvfs-goa gvfs-nfs gvfs-dnssd gnome-weather gnome-tour loupe
+pacman -Rn --noconfirm simple-scan gnome-contacts snapshot gnome-user-docs yelp gnome-music gnome-user-share gnome-remote-desktop gnome-maps sushi gnome-text-editor showtime gvfs-wsdd gvfs-smb gvfs-onedrive gvfs-goa gvfs-nfs gvfs-dnssd gnome-weather gnome-tour loupe gnome-software epiphany orca decibles malcontent rygel baobab
